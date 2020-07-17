@@ -33,6 +33,8 @@
     function showHideLightBox()
     {
         lightBox.classList.toggle('show-lightbox');
+        lbVideo.src = `videos/House-${houseInfo[this.dataset.offset][0]}.mp4`;
+        lbVideo.load();
 
         if (lbVideo.paused) {
             lbVideo.play();
@@ -41,9 +43,6 @@
             lbVideo.pause();
         }
     }
-
-
-
 
     function animateBanner()
     {
@@ -55,7 +54,6 @@
     sigils.forEach(sigil => sigil.addEventListener('click', animateBanner));
     sigils.forEach(sigil => sigil.addEventListener('click', showHideLightBox));
     lbClose.addEventListener('click', showHideLightBox);
-
     lbVideo.addEventListener('ended', showHideLightBox)
 
 })();
