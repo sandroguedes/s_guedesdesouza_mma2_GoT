@@ -24,7 +24,10 @@
         House Greyjoy's sigil is traditionally a golden kraken on a black field. Their house words are "We Do Not Sow," although the phrase "What Is Dead May Never Die" is also closely associated with House Greyjoy and their bannermen, as they are associated with the faith of the Drowned God. 
         `],
         ["Arryn", `House Arryn of the Eyrie is one of the Great Houses of Westeros. It has ruled over the Vale of Arryn for millennia, originally as the Kings of Mountain and Vale and more recently as Lords Paramount of the Vale and Wardens of the East under the Targaryen kings and Baratheon-Lannister kings. The nominal head of House Arryn is Robin Arryn, the Lord of the Eyrie, with his stepfather Petyr Baelish acting as Lord Protector until he reaches the age of majority. 
-        `]
+        `],
+        ["Targaryen", `House Targaryen of Dragonstone is a noble family of Valyrian descent who once ruled the Seven Kingdoms of Westeros. The Targaryen sigil is a three-headed dragon breathing flames, red on black. The house words are "Fire and Blood". It eventually became the first royal house of the Seven Kingdoms, as House Targaryen of King's Landing.`],
+        ["Tyrell", `House Tyrell of Highgarden is one of the Great Houses of the Seven Kingdoms, being Lords Paramount of the Mander and the liege lords of the Reach. A large, wealthy house, its wealth is only surpassed among the Great Houses by House Lannister, and the Tyrells can field the greatest armies.`],
+        ["Frey", `House Frey are a bunch of assholes who built a castle on top of a bridge.`]
     ]
 
     function showHideLightBox() {
@@ -36,12 +39,7 @@
             lbVideo.currentTime = 0;
             lbVideo.pause();
         }
-        //rewind the video and make it pause at current time of 0
-
     }
-
-
-
 
     function animateBanner() {
 
@@ -49,11 +47,6 @@
         houseName.textContent = `House ${houseInfo[this.dataset.offset][0]}`;
         houseBio.textContent = `${houseInfo[this.dataset.offset][1]}`
 
-        //multiply 600 by the data-offset
-
-    }
-
-    // sigils.forEach(sigil => sigil.addEventListener('click', showHideLightBox));
 
     sigils.forEach(sigil => sigil.addEventListener('click', animateBanner));
     lbClose.addEventListener('click', showHideLightBox);
