@@ -1,5 +1,5 @@
 (() => {
-    console.log('winter is coming');
+     console.log('GRRM dies before release of winds of winter');
 
     let lightBox = document.querySelector('.lightbox'),
         lbClose = lightBox.querySelector('span'),
@@ -30,7 +30,8 @@
         ["Frey", `House Frey are a bunch of assholes who built a castle on top of a bridge.`]
     ]
 
-    function showHideLightBox() {
+    function showHideLightBox()
+    {
         lightBox.classList.toggle('show-lightbox');
 
         if (lbVideo.paused) {
@@ -41,14 +42,18 @@
         }
     }
 
-    function animateBanner() {
 
+
+
+    function animateBanner()
+    {
         houseImages.style.right = `${this.dataset.offset * 600}px`;
         houseName.textContent = `House ${houseInfo[this.dataset.offset][0]}`;
         houseBio.textContent = `${houseInfo[this.dataset.offset][1]}`
-
+    }
 
     sigils.forEach(sigil => sigil.addEventListener('click', animateBanner));
+    sigils.forEach(sigil => sigil.addEventListener('click', showHideLightBox));
     lbClose.addEventListener('click', showHideLightBox);
 
     lbVideo.addEventListener('ended', showHideLightBox)
