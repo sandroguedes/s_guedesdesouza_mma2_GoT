@@ -1,1 +1,2 @@
-# s_guedesdesouza_mma2_GoT
+# GOT_video
+Update this with a proper readme doc
