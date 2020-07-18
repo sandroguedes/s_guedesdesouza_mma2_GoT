@@ -1,5 +1,5 @@
 (() => {
-     console.log('GRRM dies before release of winds of winter');
+     console.log('GRRM dies before the release of winds of winter');
 
     let lightBox = document.querySelector('.lightbox'),
         lbClose = lightBox.querySelector('span'),
@@ -7,7 +7,11 @@
         sigils = document.querySelectorAll('.sigilContainer'),
         houseImages = document.querySelector('#houseImages'),
         houseName = document.querySelector('.house-name'),
-        houseBio = document.querySelector('.house-info');
+        houseBio = document.querySelector('.house-info'),
+        buttonPlay = document.querySelector('#playBtn'),
+        buttonRewind = document.querySelector('#rewindBtn'),
+        sliderVolume = document.querySelector('#volume-slider'),
+        buttonMute = document.querySelector('#muteBtn');
 
     const houseInfo = [
         ["Stark", `House Stark of Winterfell is a Great House of Westeros, ruling over the vast region known as the North from their seat in Winterfell. It is one of the oldest lines of Westerosi nobility by far, claiming a line of descent stretching back over eight thousand years. Before the Targaryen conquest, as well as during the War of the Five Kings and Daenerys Targaryen's invasion of Westeros, the leaders of House Stark ruled over the region as the Kings in the North.
@@ -44,6 +48,17 @@
         }
     }
 
+    function playPause()
+    {
+        lbVideo.load();
+        if (lbVideo.paused = true) {
+            lbVideo.play();
+        } else {
+            lbVideo.pause()
+            playBtn.innerHTML = "PLAY";
+        }
+    }
+
     function animateBanner()
     {
         houseImages.style.right = `${this.dataset.offset * 600}px`;
@@ -54,6 +69,7 @@
     sigils.forEach(sigil => sigil.addEventListener('click', animateBanner));
     sigils.forEach(sigil => sigil.addEventListener('click', showHideLightBox));
     lbClose.addEventListener('click', showHideLightBox);
-    lbVideo.addEventListener('ended', showHideLightBox)
+    lbVideo.addEventListener('ended', showHideLightBox);
+    buttonPlay.addEventListener("click", playPause);
 
 })();

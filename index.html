@@ -14,17 +14,6 @@
         <section class="lightbox">
             <span class="close-lb">x</span>
 
-            <section class="vid-controls">
-                <button id="playBtn" class="playPause btn">Pause</button>
-                <button id="muteBtn" class="btn">Mute</button>
-                <label for="volume-slider">Volume:</label> 
-                <input id="volume-slider" type="range" min="1" max="100" class="volume" value="100">
-
-
-                <i class="fas fa-play-circle"></i>
-                <i class="fas fa-backward"></i>
-            </section>
-
                 <video src="./videos/House-Stark.mp4" controls muted></video>
                 <!--            
                 <video src="./videos/House-Baratheon.mp4" controls muted></video>
@@ -36,6 +25,14 @@
                 <video src="./videos/House-Tyrell.mp4" controls muted></video>
                 <video src="./videos/House-Frey.mp4" controls muted></video>
                 -->
+
+            <section class="vid-controls">
+                <!-- PLAY/STOP --> <button id="playBtn" class="playPause btn">PAUSE</button>
+                <!-- REWIND --> <button id="rewindBtn" class="rewind btn">REWIND</button>
+                <!-- VOLUME SLIDER --> <label for="volume-slider">VOLUME</label> <input id="volume-slider" type="range" min="1" max="100" class="volume" value="100">
+                <!-- MUTE --> <button id="muteBtn" class="btn">MUTE</button>
+                <!-- FULLSCREEN --> <button id=fullScreen class="btn">FULLSCREEN</button>
+            </section>
 
         </section>
 

@@ -196,6 +196,7 @@ main {
 video
 {
 width: 60%;
+z-index:400;
 border: thin solid rgba(220, 220, 220, 0.7);
 }
 
@@ -206,5 +207,19 @@ display: block;
 
 .vid-controls
 {
-border: 1px solid red;
+border: 2px dashed red;
+background-color: white;
+margin-top: -50px;
+z-index:600;
+position:absolute;
+width:100%;
+opacity:0.0;
+transition:0.3s;
 }
+
+.vid-controls:hover
+{
+opacity:1;
+}
+
+
