@@ -28,6 +28,7 @@ body {
     background-image: url(../images/grungeBG.jpg);
     background-repeat: no-repeat;
     background-position: center center;
+    background-size:cover;
     background-color: #000000;
     font-size: 16px;
 }
@@ -36,7 +37,8 @@ h1 {
     font-family: 'GOT_font';
     color: white;
     margin-top: 30px;
-    font-size: 1.25em;
+    font-size: 2em;
+    text-shadow:0px 0px 5px rgba(255, 255, 255, 0.8);
 }
 
 main {
@@ -52,6 +54,7 @@ main {
     background-color: grey;
     margin: 0 auto;
     overflow: hidden;
+    border-radius: 10px;
 }
 
 #houseImages {
@@ -82,9 +85,14 @@ main {
     overflow: hidden;
     background-image: url(../images/GOT_sprites.png);
     background-repeat: no-repeat;
-    transition: transform .3s;
-    -webkit-transition: -webkit-transform .3s;
-    -moz-transition: -moz-transform .3s;
+    margin-bottom:20px;
+    transition: transform .4s;
+}
+
+.sigilContainer:active
+{
+background-color:rgba(0, 180, 230, 0.3);
+box-shadow:0px 0px 50px 25px rgba(0, 180, 230, 0.4);
 }
 
 .stark {
@@ -157,40 +165,38 @@ main {
     background-position: -406px 0px;
 }
 
-.scaleUp {
-    -moz-transform: scale(1.7, 1.7);
-    -webkit-transform: scale(1.7, 1.7);
-    transform: scale(1.7, 1.7);
+.lightbox
+{
+position: absolute;
+top: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.7);
+z-index: 500;
+display: none;
 }
 
-.scaleHalfUp {
-    -moz-transform: scale(1.2, 1.2);
-    -webkit-transform: scale(1.2, 1.2);
-    transform: scale(1.2, 1.2);
+.close-lb
+{
+float: right;
+padding-right: 40px;
+cursor: pointer;
+font-size: 3em;
+color: white;
+font-family: Arial, Helvetica, sans-serif;
+opacity: 0.5;
+transition:.4s;
 }
 
-.lightbox {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 500;
-    display: none;
+.close-lb:hover
+{
+opacity: 1;
+font-size: 3.2em;
 }
 
-.close-lb {
-    float: right;
-    padding-right: 40px;
-    cursor: pointer;
-    font-size: 3em;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    opacity: 0.6;
-}
-
-.close-lb:hover {
-    opacity: 1;
+.close-lb:active
+{
+text-shadow: 0px 0px 10px rgba(255, 0, 0, 1);
 }
 
 video
@@ -204,6 +210,7 @@ border: thin solid rgba(220, 220, 220, 0.7);
 {
 display: block;
 }
+
 
 .vid-controls
 {

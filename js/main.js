@@ -34,6 +34,11 @@
         ["Frey", `House Frey are a bunch of assholes who built a castle on top of a bridge.`]
     ]
 
+    function delayLightBox()
+    {
+        setTimeout(showHideLightBox, 850);
+    }
+
     function showHideLightBox()
     {
         lightBox.classList.toggle('show-lightbox');
@@ -51,11 +56,11 @@
     function playPause()
     {
         lbVideo.load();
-        if (lbVideo.paused = true) {
+        if (lbVideo.paused == true) {
             lbVideo.play();
         } else {
             lbVideo.pause()
-            playBtn.innerHTML = "PLAY";
+            playBtn.innerHTML == "PLAY";
         }
     }
 
@@ -67,8 +72,8 @@
     }
 
     sigils.forEach(sigil => sigil.addEventListener('click', animateBanner));
-    sigils.forEach(sigil => sigil.addEventListener('click', showHideLightBox));
-    lbClose.addEventListener('click', showHideLightBox);
+    sigils.forEach(sigil => sigil.addEventListener('click', delayLightBox));
+    lbClose.addEventListener('click', delayLightBox);    
     lbVideo.addEventListener('ended', showHideLightBox);
     buttonPlay.addEventListener("click", playPause);
 
