@@ -12,26 +12,26 @@
 <body>
     <main>
         <section class="lightbox">
-            <span class="close-lb">x</span>
+            <div class="vid_box">
+                <span class="close-lb">x</span>
+                <video class="thevideo" src="videos/House-Stark.mp4" data-offset="0"></video>
+            </div>
 
-                <video src="./videos/House-Stark.mp4" muted></video>
-                <!--            
-                <video src="./videos/House-Baratheon.mp4" controls muted></video>
-                <video src="./videos/House-Lannister.mp4" controls muted></video>
-                <video src="./videos/House-Tully.mp4" controls muted></video>
-                <video src="./videos/House-Greyjoy.mp4" controls muted></video>
-                <video src="./videos/House-Arryn.mp4" controls muted></video>
-                <video src="./videos/House-Targaryen.mp4" controls muted></video>
-                <video src="./videos/House-Tyrell.mp4" controls muted></video>
-                <video src="./videos/House-Frey.mp4" controls muted></video>
-                -->
+            <section class="vid_controls">
+                <div class="vid_controls_box">
+                    <div class="btndivleft">
+                        <button class="pauseBtn btn">PAUSE</button>
+                        <button class="stopBtn btn">STOP</button>
+                    </div>
 
-            <section class="vid-controls">
-                <!-- PLAY/STOP --> <button id="playBtn" class="playPause btn">PAUSE</button>
-                <!-- REWIND --> <button id="rewindBtn" class="rewind btn">REWIND</button>
-                <!-- VOLUME SLIDER --> <label for="volume-slider">VOLUME</label> <input id="volume-slider" type="range" min="1" max="100" class="volume" value="100">
-                <!-- MUTE --> <button id="muteBtn" class="btn">MUTE</button>
-                <!-- FULLSCREEN --> <button id=fullScreen class="btn">FULLSCREEN</button>
+                    <div class="btndivrightt">
+                        <button class="muteBtn btn">MUTE</button>
+                        <label for="volume_slider">VOLUME</label> <input class="volume_slider btn" type="range" min="1" max="100" class="volume" value="100">
+                        <button id=fullScreen class="btn">FULLSCREEN</button>
+
+                    </div>
+                </div>
+
             </section>
 
         </section>
@@ -83,7 +83,6 @@
         </nav>
 
         <h1 class="house-name">House Stark</h1>
-
         <p class="house-info">
             House Stark of Winterfell is a Great House of Westeros, ruling over the vast region known as the North from their seat in Winterfell. It is one of the oldest lines of Westerosi nobility by far, claiming a line of descent stretching back over eight thousand years. Before the Targaryen conquest, as well as during the War of the Five Kings and Daenerys Targaryen's invasion of Westeros, the leaders of House Stark ruled over the region as the Kings in the North.
         </p>
