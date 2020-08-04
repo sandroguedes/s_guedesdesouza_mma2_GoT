@@ -180,6 +180,7 @@ display: none;
 {
 float: right;
 padding-right: 40px;
+margin-left: auto;
 cursor: pointer;
 font-size: 3em;
 color: white;
@@ -203,7 +204,9 @@ video
 {
 width: 60%;
 z-index:400;
-border: thin solid rgba(220, 220, 220, 0.7);
+border: 1px solid rgba(255, 255, 255, 0.2);
+border-radius:10px;
+margin: 0 auto;
 }
 
 .show-lightbox
@@ -211,22 +214,60 @@ border: thin solid rgba(220, 220, 220, 0.7);
 display: block;
 }
 
-
-.vid-controls
+.vid_box
 {
-border: 2px dashed red;
-background-color: white;
+display:flex;
+flex-direction:column;
+}
+
+.vid_controls
+{
 margin-top: -50px;
 z-index:600;
 position:absolute;
 width:100%;
-opacity:0.0;
-transition:0.3s;
+display:flex;
+flex-direction:row;
+justify-content:center;
 }
 
-.vid-controls:hover
+.vid_controls_box
 {
-opacity:1;
+background-color: rgba(255, 255, 255, 0.1);
+padding:5px;
+border-radius:15px;
+width:50%;
+opacity:0;  
+transition:0.3s;
+display:flex;
+flex-direction:row;
+justify-content:space-between;
+}
+.vid_controls_box:hover
+{
+opacity:1;  
+}
+
+.btn
+{
+border-radius:5px;
+background-color: rgba(255, 255, 255, 0.5);
+padding:5px;
+}
+
+.playBtn
+{
+background-color:green;
+}
+
+.pauseBtn
+{
+background-color:blue;
+}
+
+.stopBtn
+{
+background-color:red;
 }
 
 

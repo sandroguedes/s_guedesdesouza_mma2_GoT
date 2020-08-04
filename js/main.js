@@ -3,14 +3,14 @@
 
     let lightBox = document.querySelector('.lightbox'),
         lbClose = lightBox.querySelector('span'),
-        lbVideo = lightBox.querySelector('video'),
+        lbVideo = lightBox.querySelector('.thevideo'),
         sigils = document.querySelectorAll('.sigilContainer'),
         houseImages = document.querySelector('#houseImages'),
         houseName = document.querySelector('.house-name'),
         houseBio = document.querySelector('.house-info'),
-        buttonPlay = document.querySelector('#playBtn'),
-        buttonRewind = document.querySelector('#rewindBtn'),
-        sliderVolume = document.querySelector('#volume-slider'),
+        buttonPlay = document.querySelector('.pauseBtn'),
+        buttonStop = document.querySelector('.stopBtn'),
+        sliderVolume = document.querySelector('.volume_slider'),
         buttonMute = document.querySelector('#muteBtn');
 
     const houseInfo = [
@@ -32,7 +32,10 @@
         ["Targaryen", `House Targaryen of Dragonstone is a noble family of Valyrian descent who once ruled the Seven Kingdoms of Westeros. The Targaryen sigil is a three-headed dragon breathing flames, red on black. The house words are "Fire and Blood". It eventually became the first royal house of the Seven Kingdoms, as House Targaryen of King's Landing.`],
         ["Tyrell", `House Tyrell of Highgarden is one of the Great Houses of the Seven Kingdoms, being Lords Paramount of the Mander and the liege lords of the Reach. A large, wealthy house, its wealth is only surpassed among the Great Houses by House Lannister, and the Tyrells can field the greatest armies.`],
         ["Frey", `House Frey are a bunch of assholes who built a castle on top of a bridge.`]
-    ]
+    ];
+
+    const vids = ["House-Stark.mp4", "House-Baratheon.mp4", "House-Lannister.mp4", "House-Tully.mp4", "House-Greyjoy.mp4", "House-Arryn.mp4", "House-Targaryen.mp4", "House-Tyrell.mp4", "House-Frey.mp4"]
+    let vidPlaying = 0
 
     function delayLightBox()
     {
@@ -42,26 +45,37 @@
     function showHideLightBox()
     {
         lightBox.classList.toggle('show-lightbox');
-        lbVideo.src = `videos/House-${houseInfo[this.dataset.offset][0]}.mp4`;
+        lbVideo.src = "./videos/" + vids[vidPlaying];
         lbVideo.load();
-
-        if (lbVideo.paused) {
-            lbVideo.play();
-        } else {
-            lbVideo.currentTime = 0;
-            lbVideo.pause();
-        }
+        lbVideo.play();
     }
 
-    function playPause()
+    function killLightBox()
     {
-        lbVideo.load();
-        if (lbVideo.paused == true) {
-            lbVideo.play();
-        } else {
-            lbVideo.pause()
-            playBtn.innerHTML == "PLAY";
-        }
+        lightBox.classList.toggle('show-lightBox');
+        lbVideo.pause();
+        lbVideo.currentTime = 0;
+    }
+
+    function vidPlay()
+    {
+        lbVideo.play();
+    }
+
+    function vidPause()
+    {
+        lbVideo.pause();
+    }
+
+    function vidPlayChangeToPause()
+    {
+        buttonPlay.classList.toggle("playBtn")
+    }
+
+    function vidStop()
+    {
+        lbVideo.pause();
+        lbVideo.currentTime = 0;
     }
 
     function animateBanner()
@@ -73,8 +87,53 @@
 
     sigils.forEach(sigil => sigil.addEventListener('click', animateBanner));
     sigils.forEach(sigil => sigil.addEventListener('click', delayLightBox));
-    lbClose.addEventListener('click', delayLightBox);    
+    lbClose.addEventListener('click', showHideLightBox);
+    lbClose.addEventListener('click', killLightBox);    
     lbVideo.addEventListener('ended', showHideLightBox);
-    buttonPlay.addEventListener("click", playPause);
+    buttonPlay.addEventListener('click', vidPlay);
+    buttonStop.addEventListener('click', vidStop)
 
 })();
+
+//     function delayLightBox()
+//     {
+//         setTimeout(showHideLightBox, 850);
+//     }
+
+//     function showHideLightBox()
+//     {
+//         lightBox.classList.toggle('show-lightbox');
+//         lbVideo.src = `videos/House-${houseInfo[this.dataset.offset][0]}.mp4`;
+//         lbVideo.load();
+
+//         if (lbVideo.paused) {
+//             lbVideo.play();
+//         } else {
+//             lbVideo.currentTime = 0;
+//             lbVideo.pause();
+//         }
+//     }
+
+//     function playPause()
+//     {
+//         lbVideo.load();
+//         if (lbVideo.paused == true) {
+//             lbVideo.play();
+//         } else {
+//             lbVideo.pause()
+//             playBtn.innerHTML == "PLAY";
+//         }
+//     }
+
+//     function animateBanner()
+//     {
+//         houseImages.style.right = `${this.dataset.offset * 600}px`;
+//         houseName.textContent = `House ${houseInfo[this.dataset.offset][0]}`;
+//         houseBio.textContent = `${houseInfo[this.dataset.offset][1]}`
+//     }
+
+//     sigils.forEach(sigil => sigil.addEventListener('click', animateBanner));
+//     sigils.forEach(sigil => sigil.addEventListener('click', delayLightBox));
+//     lbClose.addEventListener('click', showHideLightBox);    
+//     lbVideo.addEventListener('ended', showHideLightBox);
+//     buttonPlay.addEventListener('click', playPause);
