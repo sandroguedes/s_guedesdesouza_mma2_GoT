@@ -18,17 +18,32 @@
             </div>
 
             <section class="vid_controls">
-                <div class="vid_controls_box">
-                    <div class="btndivleft">
-                        <button class="pauseBtn btn">PAUSE</button>
-                        <button class="stopBtn btn">STOP</button>
-                    </div>
+                <div class="vid_controls_box">                    
+                    <div class="vid_controls_align">
+                        <div class="btndivleft">
+                            <div class=btn>
+                                <button class="pauseBtn"></button>
+                            </div>
+                            <div class=btn>
+                                <button class="stopBtn"></button>
+                            </div>
+                        </div>
 
-                    <div class="btndivrightt">
-                        <button class="muteBtn btn">MUTE</button>
-                        <label for="volume_slider">VOLUME</label> <input class="volume_slider btn" type="range" min="1" max="100" class="volume" value="100">
-                        <button id=fullScreen class="btn">FULLSCREEN</button>
+                        <div class="btndivleft">
+                            <div class=btnmiddle>
+                                <progress class="progress" value="1"></progress>
+                            </div>
+                        </div>
 
+                        <div class="btndivrightt">
+                            <div class=btn>
+                                <button class="muteBtn"></button>
+                            </div>
+                            <input id="volume_slider" type="range" min="0" max="100" value="100" step="1">
+                            <div class=btn>
+                                <button class="fullScreenBtn"></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
