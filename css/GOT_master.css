@@ -202,7 +202,7 @@ text-shadow: 0px 0px 10px rgba(255, 0, 0, 1);
 
 video
 {
-width: 60%;
+width: 1200px;
 z-index:400;
 border: 1px solid rgba(255, 255, 255, 0.2);
 border-radius:10px;
@@ -222,7 +222,7 @@ flex-direction:column;
 
 .vid_controls
 {
-margin-top: -50px;
+margin-top: -65px;
 z-index:600;
 position:absolute;
 width:100%;
@@ -231,43 +231,127 @@ flex-direction:row;
 justify-content:center;
 }
 
+.vid_controls_align
+{
+display:flex;
+flex-direction:row;
+justify-content:space-between;
+width:95%;
+}
+
 .vid_controls_box
 {
 background-color: rgba(255, 255, 255, 0.1);
-padding:5px;
-border-radius:15px;
-width:50%;
+padding:2px;
+border-radius:10px;
+width:1100px;
 opacity:0;  
 transition:0.3s;
 display:flex;
 flex-direction:row;
-justify-content:space-between;
+justify-content:center;
 }
 .vid_controls_box:hover
 {
 opacity:1;  
 }
 
+.btndivleft
+{
+display:flex;
+flex-direction:row;
+}
+
+.btnmiddle
+{
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.btndivrightt
+{
+display:flex;
+flex-direction:row;
+}
+
 .btn
 {
 border-radius:5px;
-background-color: rgba(255, 255, 255, 0.5);
+background-color: rgba(255, 255, 255, 0);
 padding:5px;
+margin:5px;
+transition:0.3s;
+}
+
+button
+{
+background-color: rgba(255, 255, 255, 0);
+border:none;
+outline:none;
+}
+
+.btn:hover
+{
+background-color:rgba(255, 255, 255, 0.3);
+box-shadow:0px 0px 0px 5px rgba(255, 255, 255, 0.3);
+}
+
+.btn:active
+{
+background-color:rgba(255, 255, 255, 0.6);
+box-shadow:0px 0px 0px 5px rgba(255, 255, 255, 0.6);
 }
 
 .playBtn
 {
-background-color:green;
+height:25px;
+width:25px;
+background-image:url(../images/btnplay.svg);
+border:none;
 }
 
 .pauseBtn
 {
-background-color:blue;
+height:25px;
+width:25px;
+background-image:url(../images/btnpause.svg);
+border:none;
 }
 
 .stopBtn
 {
-background-color:red;
+height:25px;
+width:25px;
+background-image:url(../images/btnstop.svg);
+border:none;
 }
 
+.fullScreenBtn
+{
+height:25px;
+width:25px;
+background-image:url(../images/btnfullscreen.svg);
+border:none;
+}
 
+.muteBtntoogle
+{
+height:25px;
+width:25px;
+background-image:url(../images/btnmute.svg);
+border:none;
+}
+
+.muteBtn
+{
+height:25px;
+width:25px;
+background-image:url(../images/btnvolume.svg);
+border:none;
+}
+
+.progress
+{
+width:700px
+}

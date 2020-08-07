@@ -1,5 +1,5 @@
 (() => {
-     console.log('GRRM dies before the release of winds of winter');
+    console.log('GRRM dies before the release of Winds of Winter');
 
     let lightBox = document.querySelector('.lightbox'),
         lbClose = lightBox.querySelector('span'),
@@ -10,8 +10,10 @@
         houseBio = document.querySelector('.house-info'),
         buttonPlay = document.querySelector('.pauseBtn'),
         buttonStop = document.querySelector('.stopBtn'),
-        sliderVolume = document.querySelector('.volume_slider'),
-        buttonMute = document.querySelector('#muteBtn');
+        sliderVolume = document.querySelector('#volume_slider'),
+        buttonMute = document.querySelector('.muteBtn'),
+        progressBar = document.querySelector(".progress"),
+        fullScreen = document.querySelector(".fullScreenBtn");
 
     const houseInfo = [
         ["Stark", `House Stark of Winterfell is a Great House of Westeros, ruling over the vast region known as the North from their seat in Winterfell. It is one of the oldest lines of Westerosi nobility by far, claiming a line of descent stretching back over eight thousand years. Before the Targaryen conquest, as well as during the War of the Five Kings and Daenerys Targaryen's invasion of Westeros, the leaders of House Stark ruled over the region as the Kings in the North.
@@ -34,22 +36,20 @@
         ["Frey", `House Frey are a bunch of assholes who built a castle on top of a bridge.`]
     ];
 
+// array for selecting videos by clicking on the sigils
     const vids = ["House-Stark.mp4", "House-Baratheon.mp4", "House-Lannister.mp4", "House-Tully.mp4", "House-Greyjoy.mp4", "House-Arryn.mp4", "House-Targaryen.mp4", "House-Tyrell.mp4", "House-Frey.mp4"]
     let vidPlaying = 0
 
-    function delayLightBox()
-    {
-        setTimeout(showHideLightBox, 850);
-    }
-
-    function showHideLightBox()
+// the light box must live
+    function showHideLightBox(ref)
     {
         lightBox.classList.toggle('show-lightbox');
-        lbVideo.src = "./videos/" + vids[vidPlaying];
+        lbVideo.src = "./videos/" + vids[ref];
         lbVideo.load();
         lbVideo.play();
     }
 
+// the lightbox must die
     function killLightBox()
     {
         lightBox.classList.toggle('show-lightBox');
@@ -57,83 +57,92 @@
         lbVideo.currentTime = 0;
     }
 
-    function vidPlay()
+
+// controls the PLAYPAUSE button
+    function playPause()
     {
-        lbVideo.play();
+        if (lbVideo.paused) {
+            lbVideo.play();
+            buttonPlay.classList.toggle("pauseBtn");
+            buttonPlay.classList.toggle("playBtn");
+        } else {
+            lbVideo.pause();
+            buttonPlay.classList.toggle("pauseBtn");
+            buttonPlay.classList.toggle("playBtn");
+        }
     }
 
-    function vidPause()
-    {
-        lbVideo.pause();
-    }
-
-    function vidPlayChangeToPause()
-    {
-        buttonPlay.classList.toggle("playBtn")
-    }
-
-    function vidStop()
+// controls the STOP button
+    function stopButton()
     {
         lbVideo.pause();
         lbVideo.currentTime = 0;
+        if (lbVideo.paused) {
+            buttonPlay.classList.toggle("pauseBtn");
+            buttonPlay.classList.toggle("playBtn");
+        } else {
+            buttonPlay.classList.toggle("pauseBtn");
+            buttonPlay.classList.toggle("playBtn");
+        }
     }
 
+// controls the MUTE button
+    function muteButton()
+    {
+        if (lbVideo.muted == true) {
+            lbVideo.muted = false;
+            buttonMute.classList.toggle("muteBtntoogle");
+            buttonMute.classList.toggle("muteBtn");
+        } else {
+            lbVideo.muted = true;
+            buttonMute.classList.toggle("muteBtn");
+            buttonMute.classList.toggle("muteBtntoogle");
+        }
+    }
+
+// progress bar for the video (can't find a way to control the progress by clicking yet AND even though its working fine it keeps throwing an error in the log)
+    function progressionBar()
+    {
+        progressBar.value = lbVideo.currentTime / lbVideo.duration;
+    }
+
+// controls the volume (this is my first time writing a function that actually passes data on my own, seems to be working though)
+    function setVolume(e)
+    {
+        lbVideo.volume = e.currentTarget.value / 100;
+    }
+
+// makes the video go fullscreen (but all the controls revert to the default ones and I have absolutely no idea what to do about it)
+    function makeItFullScreen()
+    {
+        if (lbVideo.requestFullScreen) {
+            lbVideo.requestFullScreen();
+        } else if(lbVideo.webkitRequestFullScreen) {
+            lbVideo.webkitRequestFullScreen();
+        } else if(lbVideo.mozRequestFullScreen) {
+            lbVideo.mozRequestFullScreen();
+        }
+    }
+
+// banner animation
     function animateBanner()
     {
         houseImages.style.right = `${this.dataset.offset * 600}px`;
         houseName.textContent = `House ${houseInfo[this.dataset.offset][0]}`;
-        houseBio.textContent = `${houseInfo[this.dataset.offset][1]}`
+        houseBio.textContent = `${houseInfo[this.dataset.offset][1]}`;
+        showHideLightBox(this.dataset.offset);
     }
 
+// the "little birds" that make it all happen when nobody's looking
     sigils.forEach(sigil => sigil.addEventListener('click', animateBanner));
-    sigils.forEach(sigil => sigil.addEventListener('click', delayLightBox));
     lbClose.addEventListener('click', showHideLightBox);
     lbClose.addEventListener('click', killLightBox);    
     lbVideo.addEventListener('ended', showHideLightBox);
-    buttonPlay.addEventListener('click', vidPlay);
-    buttonStop.addEventListener('click', vidStop)
-
+    buttonPlay.addEventListener('click', playPause);
+    buttonStop.addEventListener('click', stopButton);
+    buttonMute.addEventListener('click', muteButton);
+    lbVideo.addEventListener('timeupdate', progressionBar);
+    sliderVolume.addEventListener('change', setVolume);
+    sliderVolume.addEventListener('input', setVolume);
+    fullScreen.addEventListener('click', makeItFullScreen)
 })();
-
-//     function delayLightBox()
-//     {
-//         setTimeout(showHideLightBox, 850);
-//     }
-
-//     function showHideLightBox()
-//     {
-//         lightBox.classList.toggle('show-lightbox');
-//         lbVideo.src = `videos/House-${houseInfo[this.dataset.offset][0]}.mp4`;
-//         lbVideo.load();
-
-//         if (lbVideo.paused) {
-//             lbVideo.play();
-//         } else {
-//             lbVideo.currentTime = 0;
-//             lbVideo.pause();
-//         }
-//     }
-
-//     function playPause()
-//     {
-//         lbVideo.load();
-//         if (lbVideo.paused == true) {
-//             lbVideo.play();
-//         } else {
-//             lbVideo.pause()
-//             playBtn.innerHTML == "PLAY";
-//         }
-//     }
-
-//     function animateBanner()
-//     {
-//         houseImages.style.right = `${this.dataset.offset * 600}px`;
-//         houseName.textContent = `House ${houseInfo[this.dataset.offset][0]}`;
-//         houseBio.textContent = `${houseInfo[this.dataset.offset][1]}`
-//     }
-
-//     sigils.forEach(sigil => sigil.addEventListener('click', animateBanner));
-//     sigils.forEach(sigil => sigil.addEventListener('click', delayLightBox));
-//     lbClose.addEventListener('click', showHideLightBox);    
-//     lbVideo.addEventListener('ended', showHideLightBox);
-//     buttonPlay.addEventListener('click', playPause);
